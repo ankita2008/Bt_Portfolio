@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio - Bootstrap</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Typed.js -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    
+    <style>
+        :root {
+            --primary: #0dcaf0;
+            --dark: #0a0e27;
+            --secondary: #1a1d3a;
+        }
+        
+        body {
+            background: var(--dark);
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        /* Custom Bootstrap Theme Colors */
+        .bg-dark-custom {
+            background-color: var(--dark) !important;
+        }
+        
+        .bg-secondary-custom {
+            background-color: var(--secondary) !important;
+        }
+        
+        .text-primary-custom {
+            color: var(--primary) !important;
+        }
+        
+        .btn-primary-custom {
+            background-color: var(--primary);
+            border: none;
+            color: var(--dark);
+            font-weight: 600;
+        }
+        
+        .btn-primary-custom:hover {
+            background-color: #0bb5d6;
+            color: var(--dark);
+            box-shadow: 0 0 20px var(--primary);
+        }
+        
+        /* Navbar Custom Styling */
+        .navbar {
+            backdrop-filter: blur(10px);
+            background: rgba(10, 14, 39, 0.95) !important;
+            box-shadow: 0 2px 10px rgba(13, 202, 240, 0.2);
+        }
+        
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .navbar-nav .nav-link {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            transition: all 0.3s;
+        }
+        
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: var(--primary) !important;
+        }
+        
+        /* Hero Section with Bootstrap */
+        .hero-section {
+            min-height: 100vh;
+            padding-top: 100px;
+        }
+        
+        .hero-img {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        /* Bootstrap Badge Custom */
+        .badge-custom {
+            background: var(--primary);
+            color: var(--dark);
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+        }
+        
+        /* Bootstrap Card Custom */
+        .card-custom {
+            background: var(--secondary);
+            border: 1px solid rgba(13, 202, 240, 0.2);
+            transition: all 0.3s;
+        }
+        
+        .card-custom:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(13, 202, 240, 0.3);
+        }
+        
+        /* Social Icons with Bootstrap */
+        .btn-social {
+            width: 45px;
+            height: 45px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            transition: all 0.3s;
+        }
+        
+        .btn-social:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: scale(1.1);
+        }
+        
+        /* Progress Bars */
+        .progress-custom {
+            height: 25px;
+            background: rgba(13, 202, 240, 0.1);
+        }
+        
+        .progress-bar-custom {
+            background: linear-gradient(90deg, var(--primary), #00ffff);
+            font-weight: 600;
+        }
+        
+        /* Portfolio Cards */
+        .portfolio-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, var(--primary));
+            padding: 2rem;
+            transform: translateY(100%);
+            transition: 0.5s;
+        }
+        
+        .portfolio-card:hover .portfolio-overlay {
+            transform: translateY(0);
+        }
+        
+        /* Form Controls Custom */
+        .form-control-custom {
+            background: var(--secondary);
+            border: 2px solid rgba(13, 202, 240, 0.2);
+            color: #fff;
+            padding: 0.75rem;
+        }
+        
+        .form-control-custom:focus {
+            background: var(--secondary);
+            border-color: var(--primary);
+            color: #fff;
+            box-shadow: 0 0 0 0.25rem rgba(13, 202, 240, 0.25);
+        }
+        
+        /* Scroll to Top Button */
+        .btn-scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: var(--dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+        }
+        
+        .btn-scroll-top:hover {
+            background: #0bb5d6;
+            color: var(--dark);
+        }
+        
+        /* List Group Custom */
+        .list-group-custom .list-group-item {
+            background: transparent;
+            border: none;
+            color: #fff;
+            padding: 0.75rem 0;
+        }
+        
+        .list-group-custom .list-group-item i {
+            color: var(--primary);
+            margin-right: 1rem;
+        }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target=".navbar">
+
+    <!-- Bootstrap Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark-custom">
+        <div class="container">
+            <a class="navbar-brand text-primary-custom" href="#">
+                <i class="fas fa-code me-2"></i>Portfolio
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section using Bootstrap -->
+    <section id="home" class="hero-section bg-dark-custom">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <div class="mb-3">
+                        <span class="badge badge-custom">Welcome</span>
+                    </div>
+                    <h3 class="display-6 mb-2">Hello, It's Me</h3>
+                    <h1 class="display-3 fw-bold mb-3">Satasiya Ankita</h1>
+                    <h3 class="h2 mb-4">And I'm a <span class="text-primary-custom typed-text"></span></h3>
+                    <p class="lead mb-4">
+                        I'm a web Designer with extensive experience for over 1 year. 
+                        Expertise is to create and website design, Frontend design, and many more....
+                    </p>
+                    
+                    <!-- Social Links using Bootstrap Buttons -->
+                    <div class="d-flex gap-3 mb-4">
+                        <a href="#" class="btn btn-social">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="btn btn-social">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="btn btn-social">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="btn btn-social">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                    
+                    <a href="#about" class="btn btn-primary-custom btn-lg px-4">
+                        More About Me <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="./img/my-profile-img.jpg" 
+                         class="img-fluid rounded-circle hero-img shadow-lg" 
+                         alt="Profile">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section using Bootstrap -->
+    <section id="about" class="py-5 bg-secondary-custom">
+        <div class="container py-5">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <img src="./img/my-profile-img.jpg" 
+                         class="img-fluid rounded shadow-lg" 
+                         alt="About">
+                </div>
+                <div class="col-lg-6">
+                    <span class="badge bg-info text-dark mb-3">About Me</span>
+                    <h2 class="display-4 fw-bold mb-3">
+                        About <span class="text-primary-custom">Me</span>
+                    </h2>
+                    <h4 class="text-primary-custom mb-4">Full Stack Developer</h4>
+                    <p class="lead mb-3">
+                        I am skilled web designer with over 1 year of experience in the industry. 
+                        My passion lies in crafting captivating website designs and implementing 
+                        them through frontend development.
+                    </p>
+                    <p class="mb-4">
+                        I take pride in staying up-to-date with current design trends and leveraging 
+                        my creativity to produce visually appealing and user-friendly websites. 
+                        Throughout my career, I have developed a deep understanding of user experience 
+                        (UX) and user interface (UI) principles.
+                    </p>
+                    
+                    <!-- Bootstrap Alert Component -->
+                    <div class="alert alert-info border-0 bg-opacity-10" role="alert">
+                        <i class="fas fa-lightbulb me-2"></i>
+                        <strong>Passionate</strong> about creating amazing web experiences!
+                    </div>
+                    
+                    <a href="#contact" class="btn btn-primary-custom btn-lg mt-3">
+                        Hire Me <i class="fas fa-paper-plane ms-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section using Bootstrap Cards -->
+    <section id="services" class="py-5 bg-dark-custom">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <span class="badge bg-info text-dark mb-3">What I Do</span>
+                <h2 class="display-4 fw-bold">
+                    My <span class="text-primary-custom">Services</span>
+                </h2>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="card card-custom h-100 border-0">
+                        <div class="card-body p-4">
+                            <div class="text-primary-custom mb-3">
+                                <i class="fas fa-palette fa-3x"></i>
+                            </div>
+                            <h3 class="card-title h4 mb-3 text-primary-custom mb-2">UI/UX Design</h3>
+                            <p class="card-text text-primary-custom mb-2">
+                                Creating beautiful and intuitive user interfaces with modern design 
+                                principles. Focus on user experience and interaction design.
+                            </p>
+                            <a href="#" class="btn btn-outline-info btn-sm mt-3">
+                                Learn More <i class="fas fa-arrow-right ms-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="card card-custom h-100 border-0">
+                        <div class="card-body p-4">
+                            <div class="text-primary-custom mb-3">
+                                <i class="fas fa-code fa-3x"></i>
+                            </div>
+                            <h3 class="card-title h4 mb-3 text-primary-custom mb-2">Web Development</h3>
+                            <p class="card-text text-primary-custom mb-2">
+                                Building responsive and modern websites using latest technologies. 
+                                Expertise in HTML, CSS, JavaScript, and modern frameworks.
+                            </p>
+                            <a href="#" class="btn btn-outline-info btn-sm mt-3">
+                                Learn More <i class="fas fa-arrow-right ms-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="card card-custom h-100 border-0">
+                        <div class="card-body p-4">
+                            <div class="text-primary-custom mb-3">
+                                <i class="fas fa-mobile-alt fa-3x"></i>
+                            </div>
+                            <h3 class="card-title h4 mb-3 text-primary-custom mb-2">App Development</h3>
+                            <p class="card-text text-primary-custom mb-2">
+                                Developing mobile-first applications with seamless user experience. 
+                                Cross-platform solutions for iOS and Android devices.
+                            </p>
+                            <a href="#" class="btn btn-outline-info btn-sm mt-3">
+                                Learn More <i class="fas fa-arrow-right ms-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section using Bootstrap Progress Bars -->
+    <section id="skills" class="py-5 bg-secondary-custom">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <span class="badge bg-info text-dark mb-3">My Expertise</span>
+                <h2 class="display-4 fw-bold">
+                    My <span class="text-primary-custom">Skills</span>
+                </h2>
+            </div>
+            
+            <div class="row g-5">
+                <!-- Technical Skills -->
+                <div class="col-lg-6">
+                    <h3 class="h4 mb-4 text-primary-custom">
+                        <i class="fas fa-laptop-code me-2"></i>Technical Skills
+                    </h3>
+                    
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span><i class="fab fa-html5 text-danger me-2"></i>HTML</span>
+                            <span class="badge bg-info text-dark">90%</span>
+                        </div>
+                        <div class="progress progress-custom">
+                            <div class="progress-bar progress-bar-custom" style="width: 90%">90%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span><i class="fab fa-css3-alt text-primary me-2"></i>CSS</span>
+                            <span class="badge bg-info text-dark">85%</span>
+                        </div>
+                        <div class="progress progress-custom">
+                            <div class="progress-bar progress-bar-custom" style="width: 85%">85%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span><i class="fab fa-js text-warning me-2"></i>JavaScript</span>
+                            <span class="badge bg-info text-dark">75%</span>
+                        </div>
+                        <div class="progress progress-custom">
+                            <div class="progress-bar progress-bar-custom" style="width: 75%">75%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span><i class="fab fa-bootstrap text-purple me-2"></i>Bootstrap</span>
+                            <span class="badge bg-info text-dark">80%</span>
+                        </div>
+                        <div class="progress progress-custom">
+                            <div class="progress-bar progress-bar-custom" style="width: 80%">80%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span><i class="fab fa-react text-info me-2"></i>React</span>
+                            <span class="badge bg-info text-dark">70%</span>
+                        </div>
+                        <div class="progress progress-custom">
+                            <div class="progress-bar progress-bar-custom" style="width: 70%">70%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Professional Skills -->
+                <div class="col-lg-6">
+                    <h3 class="h4 mb-4 text-primary-custom">
+                        <i class="fas fa-chart-line me-2"></i>Professional Skills
+                    </h3>
+                    
+                    <div class="row text-center g-4">
+                        <div class="col-6">
+                            <div class="card card-custom border-0 h-100">
+                                <div class="card-body">
+                                    <div class="display-4 text-primary-custom mb-2">90%</div>
+                                    <h5 class="text-primary-custom mb-2">Creativity</h5>
+                                    <div class="progress progress-custom mt-3" style="height: 5px;">
+                                        <div class="progress-bar bg-info" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-6">
+                            <div class="card card-custom border-0 h-100">
+                                <div class="card-body">
+                                    <div class="display-4 text-primary-custom mb-2">65%</div>
+                                    <h5 class="text-primary-custom mb-2">Communication</h5>
+                                    <div class="progress progress-custom mt-3" style="height: 5px;">
+                                        <div class="progress-bar bg-info" style="width: 65%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-6">
+                            <div class="card card-custom border-0 h-100">
+                                <div class="card-body">
+                                    <div class="display-4 text-primary-custom mb-2">50%</div>
+                                    <h5 class="text-primary-custom mb-2">Problem Solving</h5>
+                                    <div class="progress progress-custom mt-3" style="height: 5px;">
+                                        <div class="progress-bar bg-info" style="width: 50%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-6">
+                            <div class="card card-custom border-0 h-100">
+                                <div class="card-body">
+                                    <div class="display-4 text-primary-custom mb-2">85%</div>
+                                    <h5 class="text-primary-custom mb-2">Teamwork</h5>
+                                    <div class="progress progress-custom mt-3" style="height: 5px;">
+                                        <div class="progress-bar bg-info" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section using Bootstrap Cards -->
+    <section id="portfolio" class="py-5 bg-dark-custom">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <span class="badge bg-info text-dark mb-3">My Work</span>
+                <h2 class="display-4 fw-bold">
+                    Latest <span class="text-primary-custom">Projects</span>
+                </h2>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="card border-0 portfolio-card">
+                        <img src="img/app-1.jpg" 
+                             class="card-img" alt="Project 1">
+                        <div class="portfolio-overlay">
+                            <h5 class="text-dark fw-bold">UI/UX Design</h5>
+                            <p class="text-dark">Modern and intuitive interface design for mobile app</p>
+                            <a href="#" class="btn btn-dark btn-sm">
+                                <i class="fas fa-link me-2"></i>View Project
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="card border-0 portfolio-card">
+                        <img src="./img/app-2.jpg" 
+                             class="card-img" alt="Project 2">
+                        <div class="portfolio-overlay">
+                            <h5 class="text-dark fw-bold">Web Development</h5>
+                            <p class="text-dark">Responsive e-commerce website with modern features</p>
+                            <a href="#" class="btn btn-dark btn-sm">
+                                <i class="fas fa-link me-2"></i>View Project
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="card border-0 portfolio-card">
+                        <img src="./img/app-3.jpg" 
+                             class="card-img" alt="Project 3">
+                        <div class="portfolio-overlay">
+                            <h5 class="text-dark fw-bold">App Design</h5>
+                            <p class="text-dark">Clean and minimal mobile application interface</p>
+                            <a href="#" class="btn btn-dark btn-sm">
+                                <i class="fas fa-link me-2"></i>View Project
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section using Bootstrap Forms -->
+    <section id="contact" class="py-5 bg-secondary-custom">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <span class="badge bg-info text-dark mb-3">Get In Touch</span>
+                <h2 class="display-4 fw-bold">
+                    Contact <span class="text-primary-custom">Me</span>
+                </h2>
+            </div>
+            
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <h4 class="text-primary-custom mb-4">Let's Work Together</h4>
+                    <p class="lead mb-4">
+                        Feel free to reach out for collaborations or just a friendly hello. 
+                        I'm always excited to work on new projects!
+                    </p>
+                    
+                    <!-- Bootstrap List Group -->
+                    <ul class="list-group list-group-custom mb-4">
+                        <li class="list-group-item">
+                            <i class="fas fa-envelope"></i>
+                            patelankita3037@gmail.com
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fas fa-phone"></i>
+                            9023762129
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Gujarat, India
+                        </li>
+                    </ul>
+                    
+                    <div class="d-flex gap-3">
+                        <a href="#" class="btn btn-social">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="btn btn-social">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="btn btn-social">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="btn btn-social">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <!-- Bootstrap Form -->
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Your Name</label>
+                            <input type="text" class="form-control form-control-custom" 
+                                   placeholder="Enter your name" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Your Email</label>
+                            <input type="email" class="form-control form-control-custom" 
+                                   placeholder="Enter your email" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Subject</label>
+                            <input type="text" class="form-control form-control-custom" 
+                                   placeholder="Enter subject">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Message</label>
+                            <textarea class="form-control form-control-custom" rows="5" 
+                                      placeholder="Enter your message"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary-custom btn-lg w-100">
+                            <i class="fas fa-paper-plane me-2"></i>Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer using Bootstrap -->
+    <footer class="bg-dark-custom text-center py-4">
+        <div class="container">
+            <p class="mb-0">
+                Developed with <i class="fas fa-heart text-danger"></i> by 
+                <span class="text-primary-custom fw-bold">Anku</span>
+            </p>
+            <p class="text-muted small mb-0">© 2024 All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <a href="#home" class="btn btn-scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Typed.js Animation
+        var typed = new Typed('.typed-text', {
+            strings: ['Frontend Developer', 'Web Designer', 'UI/UX Designer'],
+            typeSpeed: 100,
+            backSpeed: 100,
+            backDelay: 1000,
+            loop: true
+        });
+        
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+        
+        // Active Nav Link on Scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop -
